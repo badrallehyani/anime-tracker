@@ -1,0 +1,5 @@
+{
+    "data_file_name": "data.json",
+    "sleep_time": 5,
+    "aria2_xmlrpc_server_url": "http://localhost:6800/rpc"
+}
