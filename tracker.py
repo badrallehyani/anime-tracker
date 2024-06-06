@@ -54,7 +54,8 @@ while True:
         if(data_has_changed):
             update_data(data)
             logging.info("Updated")
-        logging.info("Nothing New")
+        else:
+            logging.info("Nothing New")
 
         time.sleep(SLEEP_TIME)
 
