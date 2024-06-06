@@ -8,7 +8,10 @@ from aria2_helpers.torrent_download_manager import create_download_manager
 conf = json.load(open("conf.json", "r"))
 
 DATA_FILE_NAME = conf.get("data_file_name")
-SLEEP_TIME = int(conf.get("sleep_time"))
+
+SLEEP_BETWEEN_CHECKS = int(conf.get("sleep_between_checks"))
+SLEEP_BETWEEN_ANIMES = int(conf.get("sleep_between_animes"))
+
 ARIA2_XMLRPC_SERVER_URL = conf.get("aria2_xmlrpc_server_url")
 
 DOWNLOAD_MANAGER = create_download_manager(ARIA2_XMLRPC_SERVER_URL)
@@ -50,6 +53,8 @@ while True:
                 data_has_changed = 1
                 download(missing_torrent_urls, path)
                 anime.update({"done": done + missing_urls})
+
+            time.sleep(SLEEP_BETWEEN_ANIMES)
         
         if(data_has_changed):
             update_data(data)
@@ -57,7 +62,8 @@ while True:
         else:
             logging.info("Nothing New")
 
-        time.sleep(SLEEP_TIME)
+        time.sleep(SLEEP_BETWEEN_CHECKS)
 
     logging.info("isOn: 0")
-    time.sleep(SLEEP_TIME)
+    time.sleep(30)
+    

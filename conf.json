@@ -1,5 +1,6 @@
 {
     "data_file_name": "data.json",
-    "sleep_time": 5,
+    "sleep_between_checks": 1800,
+    "sleep_between_animes": 15,
     "aria2_xmlrpc_server_url": "http://localhost:6800/rpc"
 }
