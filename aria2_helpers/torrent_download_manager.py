@@ -24,7 +24,7 @@ class Download_Manager:
 
     def create_new_multiple_downloads(self, urls, path, options = None):
         createdDownloadObjects = [
-            self.create_new_download(i, path)\
+            self.create_new_download(i, path, options=options)\
             for i in urls
         ]
         return createdDownloadObjects

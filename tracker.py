@@ -26,7 +26,15 @@ def get_data() -> dict:
     return json.load(open(DATA_FILE_NAME, "r"))
 
 def download(urls, path):
-    DOWNLOAD_MANAGER.create_new_multiple_downloads(urls, path)
+    DOWNLOAD_MANAGER.create_new_multiple_downloads(
+        urls, path,
+        options = {
+                'seed-time': '0',
+                'dir': path,
+                'pause': 'false',
+                'rpc-save-upload-metadata':'false'
+        }
+    )
 
 while True:
     while is_on():
