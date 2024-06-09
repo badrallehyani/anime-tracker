@@ -1,8 +1,10 @@
 import logging, time
 logging.basicConfig(filename="log.log", format='%(asctime)s - %(message)s', level=logging.INFO)
 
-SLEEP_BETWEEN_ANIMES = 20
-SLEEP_BETWEEN_CHECKS = 1800 # 30minutes
+conf = json.load(open("conf.json", "r"))
+
+SLEEP_BETWEEN_CHECKS = int(conf.get("sleep_between_checks"))
+SLEEP_BETWEEN_ANIMES = int(conf.get("sleep_between_animes"))
 
 from updater import update
 
