@@ -8,6 +8,8 @@ from aria2_helpers.torrent_download_manager import create_download_manager
 conf = json.load(open("conf.json", "r"))
 DATA_FILE_NAME = conf.get("data_file_name")
 
+SLEEP_BETWEEN_ANIMES = int(conf.get("sleep_between_animes"))
+
 ARIA2_XMLRPC_SERVER_URL = conf.get("aria2_xmlrpc_server_url")
 DOWNLOAD_MANAGER = create_download_manager(ARIA2_XMLRPC_SERVER_URL)
 
@@ -62,7 +64,7 @@ def update(sleep_time) -> list:
     return newly_added
 
 if __name__ == '__main__':
-    newly_added = update(10)
+    newly_added = update(SLEEP_BETWEEN_ANIMES)
     if newly_added:
         logging.info("newly_added:" + str(newly_added))
     else:
