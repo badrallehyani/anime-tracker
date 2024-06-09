@@ -1,4 +1,6 @@
 import json, time
+import logging
+logging.basicConfig(filename="log.log", format='%(asctime)s - %(message)s', level=logging.INFO)
 
 from nyaasi import Nyaasi
 from aria2_helpers.torrent_download_manager import create_download_manager
@@ -60,4 +62,8 @@ def update(sleep_time) -> list:
     return newly_added
 
 if __name__ == '__main__':
-    print(update(10), flush=True)
+    newly_added = update(10)
+    if newly_added:
+        logging.info("newly_added:" + str(newly_added))
+    else:
+        logging.info('nothing new')
