@@ -1,12 +1,16 @@
-import json, time
+import os, json, time
+
 import logging
-logging.basicConfig(filename="log.log", format='%(asctime)s - %(message)s', level=logging.INFO)
+log_file_name = os.path.join( os.path.dirname(__file__), 'log.log' )
+logging.basicConfig(filename=log_file_name, format='%(asctime)s - %(message)s', level=logging.INFO)
 
 from nyaasi import Nyaasi
 from aria2_helpers.torrent_download_manager import create_download_manager
 
-conf = json.load(open("conf.json", "r"))
-DATA_FILE_NAME = conf.get("data_file_name")
+conf_file_name = os.path.join( os.path.dirname(__file__), 'conf.json' )
+conf = json.load(open(conf_file_name, "r"))
+
+DATA_FILE_NAME = os.path.join( os.path.dirname(__file__), conf.get("data_file_name") )
 
 SLEEP_BETWEEN_ANIMES = int(conf.get("sleep_between_animes"))
 
