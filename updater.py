@@ -1,15 +1,10 @@
 import json, time
-import logging
-logging.basicConfig(filename="log.log", format='%(asctime)s - %(message)s', level=logging.INFO)
-#
+
 from nyaasi import Nyaasi
 from aria2_helpers.torrent_download_manager import create_download_manager
 
 conf = json.load(open("conf.json", "r"))
 DATA_FILE_NAME = conf.get("data_file_name")
-
-SLEEP_BETWEEN_CHECKS = int(conf.get("sleep_between_checks"))
-SLEEP_BETWEEN_ANIMES = int(conf.get("sleep_between_animes"))
 
 ARIA2_XMLRPC_SERVER_URL = conf.get("aria2_xmlrpc_server_url")
 DOWNLOAD_MANAGER = create_download_manager(ARIA2_XMLRPC_SERVER_URL)
@@ -65,9 +60,4 @@ def update(sleep_time) -> list:
     return newly_added
 
 if __name__ == '__main__':
-    try:
-        print(update(SLEEP_BETWEEN_ANIMES))
-    except Exception as e:
-        print(e)
-        print('make sure aria2 rpc server is on and you are connected to the internet.')
-    
+    print(update(10), flush=True)
