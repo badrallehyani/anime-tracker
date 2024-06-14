@@ -1,3 +1,9 @@
+# THIS IS AN OLD VERSION
+Check out [anime-tracker-web](https://github.com/badrallehyani/anime-tracker-web)
+
+
+
+
 # Info
 Start by renaming `data.json.removeThis` -> `data.json`
 
@@ -6,9 +12,3 @@ Start by renaming `data.json.removeThis` -> `data.json`
 So, once Aria2-XMLRPC is On and `conf.json` is correct, run `tracker.py` and run `controller.py` and type in `r` to change `isOn` to 1 which will run the tracker.
 
 In order to add a new anime to the list, use `add.py` file and prompt the info.
-
-
-
-
-
-
